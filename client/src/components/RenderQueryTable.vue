@@ -1,11 +1,13 @@
 <template>
   <div>
 
+    Aggiornato il: {{ timestamp }} / {{ rows }} elementi caricati
+
     <v-data-table fixed-header height='800px'
       class="elevation-1"
       :headers="headers"
       :items="recordset"
-      :items-per-page="-1"
+      :items-per-page="25"
       :search='search'
       :custom-filter='filter'
     >
@@ -19,7 +21,7 @@
         ></v-text-field>
       </template>
     </v-data-table>
-  
+
   </div>
 </template>
 
@@ -29,6 +31,8 @@ export default {
   props: {
     headers: Array,
     recordset: Array,
+    rows: Number,
+    timestamp: String,
   },
   data () {
     return {
