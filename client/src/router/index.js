@@ -2,7 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Stordc from '../views/Stordc'
 import Intmov from '../views/Intmov'
-import About from '../views/About'
+import Lav from '../views/Lav'
 
 Vue.use(VueRouter)
 
@@ -18,8 +18,8 @@ const routes = [
     meta: { title: 'LAMEP APP' }
   },
   {
-    path: '/about',
-    component: About
+    path: '/lav',
+    component: Lav
   }
 ]
 

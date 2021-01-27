@@ -25,6 +25,7 @@
           text
           outlined
           @contextmenu.prevent=""
+          @click="reloadPage"
         >
           LAMEP APP
         </v-btn>
@@ -47,6 +48,15 @@
         </v-btn>
       </router-link>
 
+      <router-link to='/lav'>
+        <v-btn
+          text
+          @contextmenu.prevent=""
+        >
+          Lavorazioni
+        </v-btn>
+      </router-link>
+
       <v-spacer></v-spacer>
 
         <v-btn
@@ -56,7 +66,7 @@
         >
           ABOUT
         </v-btn>
-        <v-snackbar
+          <v-snackbar
             v-model="snackbar"
             :timeout="timeout"
           >
@@ -98,6 +108,11 @@ export default {
     timeout: 2000,
     timestamp: '',
   }),
+  methods: {
+    reloadPage() {
+      window.location.reload()
+    }
+  },
   created() {
     this.$vuetify.theme.dark = true
   },
