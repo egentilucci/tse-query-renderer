@@ -42,9 +42,9 @@ const configAWM = {
     }
 }
 
-function queryDB(config, res, sqlQuery, funcButton) {
+function queryDB(config, res, sqlQuery) {
 
-    console.log("\n[" + funcButton + "]");
+    console.log("\n[query]" + config.database);
 
     // connect to your database
     sql.connect(config, function (err) {
@@ -70,28 +70,25 @@ function queryDB(config, res, sqlQuery, funcButton) {
 
 app.get("/", function (req, res) {
 
-    var funcButton = req.body.func;
     var sqlQuery = "SELECT * FROM NVS_SITORD ORDER BY CODART ASC, DATACONS ASC";
 
-    queryDB(config, res, sqlQuery, funcButton);
+    queryDB(config, res, sqlQuery);
 
 })
 
 app.get("/intmov", function (req, res) {
 
-    var funcButton = req.body.func;
     var sqlQuery = "SELECT * FROM LAMEP_DDT ORDER BY DATADOC DESC";
 
-    queryDB(config, res, sqlQuery, funcButton);
+    queryDB(config, res, sqlQuery);
 
 })
 
 app.get("/lav", function (req, res) {
 
-    var funcButton = req.body.func;
     var sqlQuery = "SELECT * FROM NVS_ODL_LANCIO";
 
-    queryDB(configAWM, res, sqlQuery, funcButton);
+    queryDB(configAWM, res, sqlQuery);
 
 })
 
