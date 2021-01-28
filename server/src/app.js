@@ -24,26 +24,6 @@ app.use(bodyParser.urlencoded({
  */
 app.use(bodyParser.json());
 
-// const CONFIG_LAMEP = {
-//     user: "lamep",
-//     password: "Lamep2020+",
-//     server: "SQL\\SQL2017",
-//     database: "LAMEP",
-//     options: {
-//         "enableArithAbort": true
-//     }
-// }
-
-// const CONFIG_LAMEP_AWM = {
-//     user: "sa",
-//     password: "Sql2017",
-//     server: "SQL\\SQL2017",
-//     database: "LAMEP_AWM",
-//     options: {
-//         "enableArithAbort": true
-//     }
-// }
-
 function queryDB(config, res, sqlQuery) {
 
     console.log("\n[query]" + config().database);
