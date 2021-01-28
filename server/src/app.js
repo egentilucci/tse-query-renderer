@@ -5,6 +5,8 @@ const logger = require("morgan");
 const bodyParser = require("body-parser");
 const cors = require('cors');
 
+const dbconfig = require('./config/dbconfig')
+
 //app.use(express.static(__dirname + "/public"));
 app.use(logger("combined"));
 app.use(cors()); //you need to use cors if you want any client to connect to this server
@@ -22,32 +24,32 @@ app.use(bodyParser.urlencoded({
  */
 app.use(bodyParser.json());
 
-const config = {
-    user: "lamep",
-    password: "Lamep2020+",
-    server: "SQL\\SQL2017",
-    database: "LAMEP",
-    options: {
-        "enableArithAbort": true
-    }
-}
+// const CONFIG_LAMEP = {
+//     user: "lamep",
+//     password: "Lamep2020+",
+//     server: "SQL\\SQL2017",
+//     database: "LAMEP",
+//     options: {
+//         "enableArithAbort": true
+//     }
+// }
 
-const configAWM = {
-    user: "sa",
-    password: "Sql2017",
-    server: "SQL\\SQL2017",
-    database: "LAMEP_AWM",
-    options: {
-        "enableArithAbort": true
-    }
-}
+// const CONFIG_LAMEP_AWM = {
+//     user: "sa",
+//     password: "Sql2017",
+//     server: "SQL\\SQL2017",
+//     database: "LAMEP_AWM",
+//     options: {
+//         "enableArithAbort": true
+//     }
+// }
 
 function queryDB(config, res, sqlQuery) {
 
-    console.log("\n[query]" + config.database);
+    console.log("\n[query]" + config().database);
 
     // connect to your database
-    sql.connect(config, function (err) {
+    sql.connect(config(), function (err) {
 
         if (err) console.log(err);
 
@@ -72,7 +74,7 @@ app.get("/", function (req, res) {
 
     var sqlQuery = "SELECT * FROM NVS_SITORD ORDER BY CODART ASC, DATACONS ASC";
 
-    queryDB(config, res, sqlQuery);
+    queryDB(dbconfig.CONFIG_LAMEP, res, sqlQuery);
 
 })
 
@@ -80,7 +82,7 @@ app.get("/intmov", function (req, res) {
 
     var sqlQuery = "SELECT * FROM LAMEP_DDT ORDER BY DATADOC DESC";
 
-    queryDB(config, res, sqlQuery);
+    queryDB(dbconfig.CONFIG_LAMEP, res, sqlQuery);
 
 })
 
@@ -88,7 +90,7 @@ app.get("/lav", function (req, res) {
 
     var sqlQuery = "SELECT * FROM NVS_ODL_LANCIO";
 
-    queryDB(configAWM, res, sqlQuery);
+    queryDB(dbconfig.CONFIG_LAMEP_AWM, res, sqlQuery);
 
 })
 
