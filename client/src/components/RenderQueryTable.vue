@@ -7,7 +7,7 @@
       class="elevation-1"
       :headers="headers"
       :items="recordset"
-      :items-per-page="25"
+      :items-per-page="15"
       :search='search'
       :custom-filter='filter'
     >
@@ -18,8 +18,10 @@
           class="mx-4"
           clearable
           append-outer-icon="mdi-database-search"
-        ></v-text-field>
+        >
+        </v-text-field>
       </template>
+
     </v-data-table>
 
   </div>
