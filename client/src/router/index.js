@@ -19,7 +19,8 @@ const routes = [
   },
   {
     path: '/lav',
-    component: Lav
+    component: Lav,
+    meta: { title: 'LAMEP APP' }
   }
 ]
 
