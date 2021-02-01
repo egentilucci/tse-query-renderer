@@ -1,8 +1,6 @@
 <template>
   <div>
-
     Aggiornato il: {{ timestamp }} / {{ rows }} elementi caricati
-
     <v-data-table fixed-header height='800px'
       class="elevation-1"
       :headers="headers"
@@ -10,6 +8,7 @@
       :items-per-page="15"
       :search='search'
       :custom-filter='filter'
+      multi-sort
     >
      <template v-slot:top>
         <v-text-field
@@ -17,11 +16,11 @@
           label="Search"
           class="mx-4"
           clearable
-          append-outer-icon="mdi-database-search"
+          append-icon="mdi-magnify"
+          single-line
         >
         </v-text-field>
       </template>
-
     </v-data-table>
 
   </div>
@@ -39,6 +38,7 @@ export default {
   data () {
     return {
       search: '',
+      selected: [],
     }
   },
   methods: {
@@ -49,7 +49,7 @@ export default {
         value.toString().toLowerCase().indexOf(search) !== -1
     }
   },
-  created() {
+  mounted() {
     this.selectedHeaders = this.headers
   }
 }
