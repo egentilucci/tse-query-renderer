@@ -38,7 +38,6 @@ export default {
     const date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate()
     const time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds()
     this.timestamp = date + ' ' + time;
-    //this.timestamp = Date.now()
 
     for(const property in this.recordset[0]) {
       this.headers.push({
