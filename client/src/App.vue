@@ -2,23 +2,6 @@
   <v-app>
     <v-app-bar app>
 
-      <!-- <v-tooltip bottom>
-      <template v-slot:activator="{ on, attrs }">
-        <v-btn
-          text
-          outlined
-          v-bind="attrs"
-          v-on="on"
-          @contextmenu.prevent=""
-        >
-          LAMEP APP
-        </v-btn>
-      </template>
-      <span>
-        LAMEP SNC
-      </span>
-    </v-tooltip> -->
-
       <v-btn text outlined @contextmenu.prevent="" @click="reloadPage">
         LAMEP APP
       </v-btn>
