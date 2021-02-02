@@ -85,7 +85,7 @@
         console.log('updateTimestamp', value)
       },
       copyToClipboard() {
-        alert('in development')
+        alert('function in development')
       }
     },
     created() {
