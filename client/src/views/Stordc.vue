@@ -32,12 +32,13 @@ export default {
     this.data = (await getData.getData()).data
     this.recordset = JSON.parse(JSON.stringify(this.data.recordset).replace(/T00:00:00.000Z/g,''))
     this.rows = this.data.rowsAffected[0]
-    console.log(this.rows)
 
     const today = new Date()
     const date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate()
     const time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds()
     this.timestamp = date + ' ' + time;
+
+    console.log(this.rows, this.timestamp)
 
     for(const property in this.recordset[0]) {
       this.headers.push({
