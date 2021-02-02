@@ -1,6 +1,5 @@
 <template>
   <div>
-    Aggiornato il: {{ timestamp }} / {{ rows }} elementi caricati
     <v-data-table fixed-header height='800px'
       class="elevation-1"
       :headers="headers"

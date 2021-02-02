@@ -6,6 +6,15 @@
         LAMEP APP
       </v-btn>
 
+      <v-tooltip bottom>
+        <template v-slot:activator="{ on, attrs }">
+          <v-btn text outlined @contextmenu.prevent="" v-bind="attrs" v-on="on">
+            {{ timestamp }}
+          </v-btn>
+        </template>
+        <span>Loaded {{ rows }} rows</span>
+      </v-tooltip>
+
       <router-link to='/'>
         <v-btn text @contextmenu.prevent="">
           Situazione Ordini Clienti
@@ -57,8 +66,15 @@
       snackbar: false,
       text: `Made with ❤ by LAMEP SNC`,
       timeout: 2000,
-      timestamp: '',
     }),
+    computed: {
+      timestamp() {
+        return this.$store.state.timestamp
+      },
+      rows() {
+        return this.$store.state.rows
+      }
+    },
     methods: {
       reloadPage() {
         window.location.reload()

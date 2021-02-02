@@ -38,6 +38,9 @@ export default {
     const time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds()
     this.timestamp = date + ' ' + time;
 
+    this.$store.commit('updateTimestamp', this.timestamp)
+    this.$store.commit('updateRowsCount', this.rows)
+
     console.log("View: lav", this.rows, this.timestamp)
 
     for(const property in this.recordset[0]) {
