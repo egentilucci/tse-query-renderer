@@ -26,9 +26,11 @@
 
       <v-spacer></v-spacer>
 
+      <v-btn text @click="copyToClipboard"><v-icon>mdi-content-copy</v-icon></v-btn>
+
       <v-tooltip bottom>
         <template v-slot:activator="{ on, attrs }">
-          <v-btn text outlined @contextmenu.prevent="" v-bind="attrs" v-on="on">
+          <v-btn text outlined @contextmenu.prevent="" v-bind="attrs" v-on="on" @click="reloadPage">
             {{ timestamp }}
           </v-btn>
         </template>
@@ -81,6 +83,9 @@
       },
       updateTimestamp(value) {
         console.log('updateTimestamp', value)
+      },
+      copyToClipboard() {
+        alert('in development')
       }
     },
     created() {
