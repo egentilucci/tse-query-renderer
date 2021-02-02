@@ -30,7 +30,7 @@ export default {
   },
   async mounted() {
     this.data = (await getData.getData()).data
-    this.recordset = this.data.recordset
+    this.recordset = JSON.parse(JSON.stringify(this.data.recordset).replace(/T00:00:00.000Z/g,''))
     this.rows = this.data.rowsAffected[0]
     console.log(this.rows)
 
