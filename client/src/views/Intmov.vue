@@ -38,7 +38,7 @@ export default {
     const time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds()
     this.timestamp = date + ' ' + time;
 
-    console.log(this.rows, this.timestamp)
+    console.log("View: intmov", this.rows, this.timestamp)
 
     for(const property in this.recordset[0]) {
       this.headers.push({
