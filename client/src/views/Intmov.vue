@@ -12,7 +12,7 @@
 <script>
 // @ is an alias to /src
 import RenderQueryTable from '../components/RenderQueryTable'
-import getData from '@/services/getIntmovData'
+//import getData from '@/services/getIntmovData'
 
 export default {
   name: 'Intmov',
@@ -29,7 +29,7 @@ export default {
     }
   },
   async mounted() {
-    this.data = (await getData.getData()).data
+    this.data = (await this.$store.state.getIntmovData()).data
     this.recordset = JSON.parse(JSON.stringify(this.data.recordset).replace(/T00:00:00.000Z/g,''))
     this.rows = this.data.rowsAffected[0]
     
