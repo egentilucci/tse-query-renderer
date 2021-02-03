@@ -12,6 +12,7 @@
 <script>
 // @ is an alias to /src
 import RenderQueryTable from '../components/RenderQueryTable'
+import Timestamp from '../services/Timestamp'
 
 export default {
   name: 'Intmov',
@@ -32,10 +33,7 @@ export default {
     this.recordset = JSON.parse(JSON.stringify(this.data.recordset).replace(/T00:00:00.000Z/g,''))
     this.rows = this.data.rowsAffected[0]
     
-    const today = new Date()
-    const date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate()
-    const time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds()
-    this.timestamp = date + ' ' + time;
+    this.timestamp = Timestamp()
 
     this.$store.commit('updateTimestamp', this.timestamp)
     this.$store.commit('updateRowsCount', this.rows)
