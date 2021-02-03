@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <v-card>
     <v-data-table fixed-header height='800px'
       class="elevation-1"
       :headers="headers"
@@ -10,25 +10,28 @@
       multi-sort
     >
      <template v-slot:top>
-        <v-text-field
-          v-model="search"
-          label="Search"
-          class="mx-4"
-          clearable
-          append-icon="mdi-magnify"
-          single-line
-        >
-        </v-text-field>
+        <v-card-title>
+          <v-text-field
+            v-model="search"
+            label="Search"
+            class="mx-4"
+            clearable
+            append-icon="mdi-magnify"
+            single-line
+          >
+          </v-text-field>
+        </v-card-title>
       </template>
     </v-data-table>
 
-  </div>
+  </v-card>
 </template>
 
 <script>
 export default {
   name: 'Stordc',
   props: {
+    title: String,
     headers: Array,
     recordset: Array,
     rows: Number,
