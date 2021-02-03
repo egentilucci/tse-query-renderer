@@ -32,7 +32,7 @@
 
       <v-spacer></v-spacer>
 
-      <v-btn text @click="copyToClipboard"><v-icon>mdi-content-copy</v-icon></v-btn>
+      <!-- <v-btn text @click="copyToClipboard"><v-icon>mdi-content-copy</v-icon></v-btn> -->
 
       <v-tooltip bottom>
         <template v-slot:activator="{ on, attrs }">
@@ -97,9 +97,9 @@
       forceReRenderComponent() {
         this.componentKey += 1
       },
-      copyToClipboard() {
-        alert('function in development')
-      },
+      // copyToClipboard() {
+      //   alert('function in development')
+      // },
     },
     created() {
       this.$vuetify.theme.dark = true
