@@ -1,6 +1,8 @@
 <template>
-  <v-card>
-    <v-data-table fixed-header height='800px'
+  <v-card class="pa-2">
+    <v-data-table
+      fixed-header
+      height='100%'
       class="elevation-1"
       :headers="headers"
       :items="recordset"
@@ -23,7 +25,6 @@
         </v-card-title>
       </template>
     </v-data-table>
-
   </v-card>
 </template>
 
