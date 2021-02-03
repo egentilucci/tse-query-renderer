@@ -2,27 +2,35 @@
   <v-app>
     <v-app-bar app>
 
-      <v-btn text outlined @contextmenu.prevent="" @click="reloadPage">
+      <v-btn text outlined @contextmenu.prevent="" @click="forceReRenderComponent">
         LAMEP APP
       </v-btn>
 
-      <router-link to='/'>
-        <v-btn text @contextmenu.prevent="">
-          Situazione Ordini Clienti
-        </v-btn>
-      </router-link>
+      <v-spacer></v-spacer>
 
-      <router-link to='/intmov'>
-        <v-btn text @contextmenu.prevent="">
-          Interrogazione Movimenti
-        </v-btn>
-      </router-link>
+      <!-- if the user reload the page (and it's not the root route) -->
+      <!-- the toggle will show the root route even if it is not -->
+      <v-btn-toggle mandatory dense>
 
-      <router-link to='/lav'>
-        <v-btn text @contextmenu.prevent="">
-          Lavorazioni
-        </v-btn>
-      </router-link>
+        <router-link to='/'>
+          <v-btn text @contextmenu.prevent="">
+            Situazione Ordini Clienti
+          </v-btn>
+        </router-link>
+
+        <router-link to='/intmov'>
+          <v-btn text @contextmenu.prevent="">
+            Interrogazione Movimenti
+          </v-btn>
+        </router-link>
+
+        <router-link to='/lav'>
+          <v-btn text @contextmenu.prevent="">
+            Lavorazioni
+          </v-btn>
+        </router-link>
+
+      </v-btn-toggle>
 
       <v-spacer></v-spacer>
 
@@ -30,7 +38,7 @@
 
       <v-tooltip bottom>
         <template v-slot:activator="{ on, attrs }">
-          <v-btn text outlined @contextmenu.prevent="" v-bind="attrs" v-on="on" @click="reloadPage">
+          <v-btn text outlined @contextmenu.prevent="" v-bind="attrs" v-on="on" @click="forceReRenderComponent">
             {{ timestamp }}
           </v-btn>
         </template>
@@ -53,7 +61,7 @@
 
     <v-main>
 
-      <router-view></router-view>
+      <router-view :key="componentKey"></router-view>
 
     </v-main>
 
@@ -68,6 +76,7 @@
       snackbar: false,
       text: `Made with ❤ by LAMEP SNC`,
       timeout: 2000,
+      componentKey: 0
     }),
     computed: {
       timestamp() {
@@ -75,14 +84,14 @@
       },
       rows() {
         return this.$store.state.rows
-      }
+      },
     },
     methods: {
-      reloadPage() {
-        window.location.reload()
+      forceReRenderComponent() {
+        this.componentKey += 1
       },
-      updateTimestamp(value) {
-        console.log('updateTimestamp', value)
+      updateTitleToggleSelector(value) {
+        this.titleToggleSelector = value
       },
       copyToClipboard() {
         alert('function in development')
@@ -95,7 +104,7 @@
       $route: {
         immediate: true,
         handler(to) {
-          document.title = to.meta.title || 'Some Default Title';
+          document.title = to.meta.title || 'LAMEP APP';
         }
       },
     }
