@@ -8,7 +8,7 @@
 
       <v-spacer></v-spacer>
 
-      <v-btn-toggle mandatory dense :value="currentPath">
+      <v-btn-toggle dense :value="currentPath">
 
         <router-link to='/'>
           <v-btn text @contextmenu.prevent="">
