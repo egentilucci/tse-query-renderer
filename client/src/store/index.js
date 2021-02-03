@@ -8,6 +8,7 @@ export default new Vuex.Store({
   state: {
     timestamp: '',
     rows: 0,
+    currentPath: '',
     getStordcData() {
       console.log('Service:', 'stordc')
       return Api().get('/')
@@ -27,6 +28,9 @@ export default new Vuex.Store({
     },
     updateRowsCount(state, rows) {
       state.rows = rows
+    },
+    updateCurrentPath(state, currentPath) {
+      state.currentPath = currentPath
     }
   },
   actions: {

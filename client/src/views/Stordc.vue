@@ -12,7 +12,6 @@
 <script>
 // @ is an alias to /src
 import RenderQueryTable from '../components/RenderQueryTable'
-//import getData from '@/services/getStordcData'
 
 export default {
   name: 'Stordc',
@@ -40,6 +39,9 @@ export default {
 
     this.$store.commit('updateTimestamp', this.timestamp)
     this.$store.commit('updateRowsCount', this.rows)
+    this.$store.commit('updateCurrentPath', 0)
+
+    console.log(this.$route.path)
 
     console.log("View: stordc", this.rows, this.timestamp)
 

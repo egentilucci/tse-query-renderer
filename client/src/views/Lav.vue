@@ -12,7 +12,6 @@
 <script>
 // @ is an alias to /src
 import RenderQueryTable from '../components/RenderQueryTable'
-//import getData from '@/services/getLavData'
 
 export default {
   name: 'Lav',
@@ -40,6 +39,9 @@ export default {
 
     this.$store.commit('updateTimestamp', this.timestamp)
     this.$store.commit('updateRowsCount', this.rows)
+    this.$store.commit('updateCurrentPath', 2)
+
+    console.log(this.$route.path)
 
     console.log("View: lav", this.rows, this.timestamp)
 

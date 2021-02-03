@@ -8,9 +8,7 @@
 
       <v-spacer></v-spacer>
 
-      <!-- if the user reload the page (and it's not the root route) -->
-      <!-- the toggle will show the root route even if it is not -->
-      <v-btn-toggle mandatory dense>
+      <v-btn-toggle mandatory dense :value="currentPath">
 
         <router-link to='/'>
           <v-btn text @contextmenu.prevent="">
@@ -76,7 +74,8 @@
       snackbar: false,
       text: `Made with ❤ by LAMEP SNC`,
       timeout: 2000,
-      componentKey: 0
+      componentKey: 0,
+      titleToggleSelector: 0
     }),
     computed: {
       timestamp() {
@@ -85,17 +84,22 @@
       rows() {
         return this.$store.state.rows
       },
+      currentPath:{
+        get: function() {
+          return this.$store.state.currentPath
+        },
+        set: function(newValue) {
+          return newValue
+        }
+      }
     },
     methods: {
       forceReRenderComponent() {
         this.componentKey += 1
       },
-      updateTitleToggleSelector(value) {
-        this.titleToggleSelector = value
-      },
       copyToClipboard() {
         alert('function in development')
-      }
+      },
     },
     created() {
       this.$vuetify.theme.dark = true

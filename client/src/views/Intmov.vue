@@ -12,7 +12,6 @@
 <script>
 // @ is an alias to /src
 import RenderQueryTable from '../components/RenderQueryTable'
-//import getData from '@/services/getIntmovData'
 
 export default {
   name: 'Intmov',
@@ -40,6 +39,9 @@ export default {
 
     this.$store.commit('updateTimestamp', this.timestamp)
     this.$store.commit('updateRowsCount', this.rows)
+    this.$store.commit('updateCurrentPath', 1)
+
+    console.log(this.$route.path)
 
     console.log("View: intmov", this.rows, this.timestamp)
 
