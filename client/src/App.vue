@@ -95,6 +95,7 @@
     },
     methods: {
       forceReRenderComponent() {
+        console.log('re-rendering component...')
         this.componentKey += 1
       },
       // copyToClipboard() {
