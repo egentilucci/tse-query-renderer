@@ -19,7 +19,7 @@ export default {
   components: {
     RenderQueryTable
   },
-  data () {
+  data() {
     return {
       data: [],
       headers: [],
