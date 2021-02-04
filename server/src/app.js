@@ -4,8 +4,8 @@ const sql = require("mssql");
 const logger = require("morgan");
 const bodyParser = require("body-parser");
 const cors = require('cors');
-
 const dbconfig = require('./config/dbconfig')
+const port = '3030'
 
 //app.use(express.static(__dirname + "/public"));
 app.use(logger("combined"));
@@ -74,6 +74,6 @@ app.get("/lav", function (req, res) {
 
 })
 
-app.listen(3000, function () {
-    console.log("Server is running on port 3000...");
+app.listen(port, function () {
+    console.log(`Server is running on port ${port}...`);
 })
