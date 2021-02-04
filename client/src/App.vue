@@ -8,27 +8,13 @@
 
       <v-spacer></v-spacer>
 
-      <v-btn-toggle dense :value="currentPath">
+      <v-tabs exact background-color="transparent">
 
-        <router-link to='/'>
-          <v-btn text @contextmenu.prevent="">
-            Situazione Ordini Clienti
-          </v-btn>
-        </router-link>
+        <v-tab v-for="(item, idx) in tabItems" :key="idx" :to='item'>
+          {{ item.title }}
+        </v-tab>
 
-        <router-link to='/intmov'>
-          <v-btn text @contextmenu.prevent="">
-            Interrogazione Movimenti
-          </v-btn>
-        </router-link>
-
-        <router-link to='/lav'>
-          <v-btn text @contextmenu.prevent="">
-            Lavorazioni
-          </v-btn>
-        </router-link>
-
-      </v-btn-toggle>
+      </v-tabs>
 
       <v-spacer></v-spacer>
 
@@ -70,13 +56,29 @@
   export default {
     name: 'App',
     components: {},
-    data: () => ({
-      snackbar: false,
-      text: `Made with ❤ by LAMEP SNC`,
-      timeout: 2000,
-      componentKey: 0,
-      titleToggleSelector: 0
-    }),
+    data() {
+      return {
+        tabItems: [
+          {
+            title: 'Situazione Ordini Clienti',
+            path: '/'
+          },
+          {
+            title: 'Interrogazione Movimenti',
+            path: '/intmov'
+          },
+          {
+            title: 'Lavorazioni',
+            path: '/lav'
+          },
+        ],
+        snackbar: false,
+        text: `Made with ❤ by LAMEP SNC`,
+        timeout: 2000,
+        componentKey: 0,
+        titleToggleSelector: 0
+      }
+    },
     computed: {
       timestamp() {
         return this.$store.state.timestamp
