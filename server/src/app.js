@@ -5,7 +5,7 @@ const logger = require("morgan");
 const bodyParser = require("body-parser");
 const cors = require('cors');
 const dbconfig = require('./config/dbconfig')
-const port = '3030'
+const port = '3000'
 
 //app.use(express.static(__dirname + "/public"));
 app.use(logger("combined"));
