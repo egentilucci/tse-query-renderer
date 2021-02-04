@@ -2,7 +2,7 @@
   <v-app>
     <v-app-bar app>
 
-      <v-btn text outlined @contextmenu.prevent="" @click="forceReRenderComponent">
+      <v-btn text outlined @contextmenu.prevent="" @click="forceReRenderComponent" class="mr-2">
         LAMEP APP
       </v-btn>
 
