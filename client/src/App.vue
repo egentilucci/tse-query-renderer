@@ -18,15 +18,13 @@
 
       <v-spacer></v-spacer>
 
-      <!-- <v-btn text @click="copyToClipboard"><v-icon>mdi-content-copy</v-icon></v-btn> -->
-
       <v-tooltip bottom>
         <template v-slot:activator="{ on, attrs }">
           <v-btn text outlined @contextmenu.prevent="" v-bind="attrs" v-on="on" @click="forceReRenderComponent">
-            {{ timestamp }}
+            {{ sqlData.timestamp }}
           </v-btn>
         </template>
-        <span>Loaded {{ rows }} rows</span>
+        <span>Loaded {{ sqlData.rows }} rows</span>
       </v-tooltip>
 
       <v-btn text @contextmenu.prevent="" @click="snackbar = true">
@@ -80,29 +78,15 @@
       }
     },
     computed: {
-      timestamp() {
-        return this.$store.state.timestamp
+      sqlData() {
+        return this.$store.state.sqlData
       },
-      rows() {
-        return this.$store.state.rows
-      },
-      currentPath:{
-        get: function() {
-          return this.$store.state.currentPath
-        },
-        set: function(newValue) {
-          return newValue
-        }
-      }
     },
     methods: {
       forceReRenderComponent() {
         console.log('re-rendering component...')
         this.componentKey += 1
       },
-      // copyToClipboard() {
-      //   alert('function in development')
-      // },
     },
     created() {
       this.$vuetify.theme.dark = true
