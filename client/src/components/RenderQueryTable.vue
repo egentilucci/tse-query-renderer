@@ -20,6 +20,7 @@
             clearable
             append-icon="mdi-magnify"
             single-line
+            hide-details
           >
           </v-text-field>
         </v-card-title>
