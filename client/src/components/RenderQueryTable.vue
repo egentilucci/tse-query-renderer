@@ -1,12 +1,12 @@
 <template>
-  <v-card class="pa-2">
+  <v-card class='pa-2'>
     <v-data-table
       fixed-header
       height='100%'
-      class="elevation-1"
-      :headers="headers"
-      :items="recordset"
-      :items-per-page="15"
+      class='elevation-1'
+      :headers='headers'
+      :items='recordset'
+      :items-per-page='15'
       :search='search'
       :custom-filter='filter'
       multi-sort
@@ -14,11 +14,11 @@
      <template v-slot:top>
         <v-card-title>
           <v-text-field
-            v-model="search"
-            label="Search"
-            class="mx-4"
+            v-model='search'
+            label='Search'
+            class='mx-4'
             clearable
-            append-icon="mdi-magnify"
+            append-icon='mdi-magnify'
             single-line
             hide-details
           >

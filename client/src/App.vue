@@ -2,15 +2,15 @@
   <v-app>
     <v-app-bar app>
 
-      <v-btn text outlined @contextmenu.prevent="" @click="forceReRenderComponent" class="mr-2">
+      <v-btn text outlined @contextmenu.prevent='' @click='forceReRenderComponent' class='mr-2'>
         LAMEP APP
       </v-btn>
 
       <v-spacer></v-spacer>
 
-      <v-tabs exact background-color="transparent">
+      <v-tabs exact background-color='transparent'>
 
-        <v-tab v-for="(item, idx) in tabItems" :key="idx" :to='item'>
+        <v-tab v-for='(item, idx) in tabItems' :key='idx' :to='item'>
           {{ item.title }}
         </v-tab>
 
@@ -19,21 +19,21 @@
       <v-spacer></v-spacer>
 
       <v-tooltip bottom>
-        <template v-slot:activator="{ on, attrs }">
-          <v-btn text outlined @contextmenu.prevent="" v-bind="attrs" v-on="on" @click="forceReRenderComponent">
+        <template v-slot:activator='{ on, attrs }'>
+          <v-btn text outlined @contextmenu.prevent='' v-bind='attrs' v-on='on' @click='forceReRenderComponent'>
             {{ sqlData.timestamp }}
           </v-btn>
         </template>
         <span>Loaded {{ sqlData.rows }} rows</span>
       </v-tooltip>
 
-      <v-btn text @contextmenu.prevent="" @click="snackbar = true">
+      <v-btn text @contextmenu.prevent='' @click='snackbar = true'>
         ABOUT
       </v-btn>
-      <v-snackbar v-model="snackbar" :timeout="timeout">
+      <v-snackbar v-model='snackbar' :timeout='timeout'>
         {{ text }}
-        <template v-slot:action="{ attrs }">
-          <v-btn color="red" text centered v-bind="attrs" @click="snackbar = false" @contextmenu.prevent="">
+        <template v-slot:action='{ attrs }'>
+          <v-btn color='red' text centered v-bind='attrs' @click='snackbar = false' @contextmenu.prevent=''>
             Close
           </v-btn>
         </template>
@@ -43,7 +43,7 @@
 
     <v-main>
 
-      <router-view :key="componentKey"></router-view>
+      <router-view :key='componentKey'></router-view>
 
     </v-main>
 

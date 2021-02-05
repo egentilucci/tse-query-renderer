@@ -1,9 +1,9 @@
 <template>
   <div>
     <RenderQueryTable
-      :headers="sqlData.headers"
-      :recordset="sqlData.recordset"
-      :timestamp="sqlData.timestamp"
+      :headers='sqlData.headers'
+      :recordset='sqlData.recordset'
+      :timestamp='sqlData.timestamp'
     />
   </div>
 </template>

@@ -18,7 +18,7 @@ export default () => {
     if (minutes.length < 2) { minutes = '0' + minutes }
     if (seconds.length < 2) { seconds = '0' + seconds }
 
-    const time = hours + ":" + minutes + ":" + seconds
+    const time = hours + ':' + minutes + ':' + seconds
 
     return date + ' ' + time
 }
