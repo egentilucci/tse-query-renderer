@@ -26,7 +26,7 @@ app.use(bodyParser.json());
 
 function queryDB(config, res, sqlQuery) {
 
-    console.log("\n[query]" + config().database);
+    console.log("\n[query] " + config().database);
 
     // connect to your database
     sql.connect(config(), function (err) {
