@@ -1,14 +1,14 @@
-const express = require("express");
+const express = require('express');
 const app = express();
-const sql = require("mssql");
-const logger = require("morgan");
-const bodyParser = require("body-parser");
+const sql = require('mssql');
+const logger = require('morgan');
+const bodyParser = require('body-parser');
 const cors = require('cors');
 const dbconfig = require('./config/dbconfig')
 const port = '3000'
 
-//app.use(express.static(__dirname + "/public"));
-app.use(logger("combined"));
+//app.use(express.static(__dirname + '/public'));
+app.use(logger('combined'));
 app.use(cors()); //you need to use cors if you want any client to connect to this server
 
 /** bodyParser.urlencoded(options)
@@ -26,7 +26,7 @@ app.use(bodyParser.json());
 
 function queryDB(config, res, sqlQuery) {
 
-    console.log("\n[query] " + config().database);
+    console.log('\n[query] ' + config().database);
 
     // connect to your database
     sql.connect(config(), function (err) {
@@ -41,7 +41,7 @@ function queryDB(config, res, sqlQuery) {
 
             if (err) console.log(err)
 
-            console.log("~ " + Date() + " | " + sqlQuery);
+            console.log('~ ' + Date() + ' | ' + sqlQuery);
             // send records as a response
             res.send(data);
             sql.close();
@@ -50,25 +50,25 @@ function queryDB(config, res, sqlQuery) {
     });
 }
 
-app.get("/", function (req, res) {
+app.get('/', function (req, res) {
 
-    var sqlQuery = "SELECT * FROM NVS_SITORD ORDER BY CODART ASC, DATACONS ASC";
-
-    queryDB(dbconfig.CONFIG_LAMEP, res, sqlQuery);
-
-})
-
-app.get("/intmov", function (req, res) {
-
-    var sqlQuery = "SELECT * FROM LAMEP_DDT ORDER BY DATADOC DESC";
+    var sqlQuery = 'SELECT * FROM NVS_SITORD ORDER BY CODART ASC, DATACONS ASC';
 
     queryDB(dbconfig.CONFIG_LAMEP, res, sqlQuery);
 
 })
 
-app.get("/lav", function (req, res) {
+app.get('/intmov', function (req, res) {
 
-    var sqlQuery = "SELECT * FROM NVS_ODL_LANCIO";
+    var sqlQuery = 'SELECT * FROM LAMEP_DDT ORDER BY DATADOC DESC';
+
+    queryDB(dbconfig.CONFIG_LAMEP, res, sqlQuery);
+
+})
+
+app.get('/lav', function (req, res) {
+
+    var sqlQuery = 'SELECT * FROM NVS_ODL_LANCIO';
 
     queryDB(dbconfig.CONFIG_LAMEP_AWM, res, sqlQuery);
 
