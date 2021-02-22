@@ -47,6 +47,7 @@ export default {
   },
   methods: {
     filter (value, search) {
+      search = search.toLowerCase()
       return value != null &&
         search != null &&
         typeof value === 'string' &&
