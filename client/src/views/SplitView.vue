@@ -1,7 +1,7 @@
 <template>
   <div>
     <v-card flat outlined>
-      <v-toolbar dense floating>
+      <v-toolbar dense>
         <v-text-field
           v-model="searchValue"
           hide-details
