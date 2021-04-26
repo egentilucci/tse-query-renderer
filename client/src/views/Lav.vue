@@ -1,33 +1,32 @@
 <template>
   <div>
     <RenderQueryTable
-      :headers='sqlData.headers'
-      :recordset='sqlData.recordset'
-      :timestamp='sqlData.timestamp'
+      :headers="sqlData.headers"
+      :recordset="sqlData.recordset"
+      :timestamp="sqlData.timestamp"
     />
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import RenderQueryTable from '../components/RenderQueryTable'
+import RenderQueryTable from "../components/RenderQueryTable";
 
 export default {
-  name: 'Lav',
+  name: "Lav",
   components: {
-    RenderQueryTable
+    RenderQueryTable,
   },
   data() {
-    return {
-    }
+    return {};
   },
   computed: {
     sqlData() {
-      return this.$store.state.sqlData
-    }
+      return this.$store.state.sqlLavData;
+    },
   },
   created() {
-    this.$store.dispatch('loadLavData')
-  }
-}
+    this.$store.dispatch("loadLavData");
+  },
+};
 </script>

@@ -1,41 +1,41 @@
 <template>
   <div>
     <RenderQueryTable
-      :headers='sqlData.headers'
-      :recordset='sqlData.recordset'
-      :timestamp='sqlData.timestamp'
+      :headers="sqlData.headers"
+      :recordset="sqlData.recordset"
+      :timestamp="sqlData.timestamp"
     />
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import RenderQueryTable from '../components/RenderQueryTable'
+import RenderQueryTable from "../components/RenderQueryTable";
 
 export default {
-  name: 'Stordc',
+  name: "Stordc",
   components: {
-    RenderQueryTable
+    RenderQueryTable,
   },
   data() {
     return {
-      polling: null
-    }
+      polling: null,
+    };
   },
   computed: {
     sqlData() {
-      return this.$store.state.sqlData
-    }
+      return this.$store.state.sqlStordcData;
+    },
   },
   methods: {
     pollData() {
       this.polling = setInterval(() => {
-        this.$store.dispatch('loadStordcData')
-      }, 3000)
-    }
+        this.$store.dispatch("loadStordcData");
+      }, 3000);
+    },
   },
   mounted() {
-    this.$store.dispatch('loadStordcData')
+    this.$store.dispatch("loadStordcData");
   },
-}
+};
 </script>

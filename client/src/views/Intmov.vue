@@ -1,33 +1,32 @@
 <template>
   <div>
     <RenderQueryTable
-      :headers='sqlData.headers'
-      :recordset='sqlData.recordset'
-      :timestamp='sqlData.timestamp'
+      :headers="sqlData.headers"
+      :recordset="sqlData.recordset"
+      :timestamp="sqlData.timestamp"
     />
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import RenderQueryTable from '../components/RenderQueryTable'
+import RenderQueryTable from "../components/RenderQueryTable";
 
 export default {
-  name: 'Intmov',
+  name: "Intmov",
   components: {
-    RenderQueryTable
+    RenderQueryTable,
   },
   data() {
-    return {
-    }
+    return {};
   },
   computed: {
     sqlData() {
-      return this.$store.state.sqlData
-    }
+      return this.$store.state.sqlIntmovData;
+    },
   },
   created() {
-    this.$store.dispatch('loadIntmovData')
-  }
-}
+    this.$store.dispatch("loadIntmovData");
+  },
+};
 </script>
