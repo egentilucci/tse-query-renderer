@@ -162,7 +162,7 @@ export default new Vuex.Store({
       state.sqlBySmartData.timestamp = "";
 
       state.sqlBySmartData.recordset = JSON.parse(
-        JSON.stringify(sqlBySmartData.recordset).replace(/T00:00:00.000Z/g, "")
+        JSON.stringify(sqlBySmartData.recordset).replace(/.000Z/g, "")
       );
       state.sqlBySmartData.rows = sqlBySmartData.rowsAffected[0];
       for (const property in sqlBySmartData.recordset[0]) {
