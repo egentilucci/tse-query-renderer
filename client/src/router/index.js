@@ -4,6 +4,8 @@ import Stordc from "../views/Stordc";
 import Intmov from "../views/Intmov";
 import Lav from "../views/Lav";
 import SplitView from "../views/SplitView";
+import BySprint from "../views/BySprint";
+import BySmart from "../views/BySmart";
 
 Vue.use(VueRouter);
 
@@ -26,6 +28,16 @@ const routes = [
   {
     path: "/splitview",
     component: SplitView,
+    meta: { title: "LAMEP APP" },
+  },
+  {
+    path: "/bysprint",
+    component: BySprint,
+    meta: { title: "LAMEP APP" },
+  },
+  {
+    path: "/bysmart",
+    component: BySmart,
     meta: { title: "LAMEP APP" },
   },
 ];

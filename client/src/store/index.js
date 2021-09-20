@@ -30,6 +30,22 @@ export default new Vuex.Store({
       rows: 0,
       timestamp: "",
     },
+
+    // BYSPRINT
+    sqlBySprintData: {
+      recordset: [],
+      headers: [],
+      rows: 0,
+      timestamp: "",
+    },
+
+    // BYSMART
+    sqlBySmartData: {
+      recordset: [],
+      headers: [],
+      rows: 0,
+      timestamp: "",
+    },
   },
   mutations: {
     // STORDC
@@ -43,6 +59,9 @@ export default new Vuex.Store({
       state.sqlStordcData.recordset = JSON.parse(
         JSON.stringify(sqlStordcData.recordset).replace(/T00:00:00.000Z/g, "")
       );
+
+      console.log(state.sqlStordcData.recordset);
+
       state.sqlStordcData.rows = sqlStordcData.rowsAffected[0];
       for (const property in sqlStordcData.recordset[0]) {
         state.sqlStordcData.headers.push({
@@ -106,13 +125,65 @@ export default new Vuex.Store({
       state.sqlLavData.timestamp = Timestamp();
       console.log("VUEX -> updated sqlLavData ", state.sqlLavData.timestamp);
     },
+
+    // BYSPRINT
+    SAVE_BYSPRINT_DATA(state, sqlBySprintData) {
+      // clear object before use
+      state.sqlBySprintData.recordset = [];
+      state.sqlBySprintData.headers = [];
+      state.sqlBySprintData.rows = 0;
+      state.sqlBySprintData.timestamp = "";
+
+      state.sqlBySprintData.recordset = JSON.parse(
+        JSON.stringify(sqlBySprintData.recordset).replace(/T00:00:00.000Z/g, "")
+      );
+      state.sqlBySprintData.rows = sqlBySprintData.rowsAffected[0];
+      for (const property in sqlBySprintData.recordset[0]) {
+        state.sqlBySprintData.headers.push({
+          text: property,
+          value: property,
+          align: "start",
+        });
+      }
+
+      state.sqlBySprintData.timestamp = Timestamp();
+      console.log(
+        "VUEX -> updated sqlBySprintData ",
+        state.sqlBySprintData.timestamp
+      );
+    },
+
+    // BYSMART
+    SAVE_BYSMART_DATA(state, sqlBySmartData) {
+      // clear object before use
+      state.sqlBySmartData.recordset = [];
+      state.sqlBySmartData.headers = [];
+      state.sqlBySmartData.rows = 0;
+      state.sqlBySmartData.timestamp = "";
+
+      state.sqlBySmartData.recordset = JSON.parse(
+        JSON.stringify(sqlBySmartData.recordset).replace(/T00:00:00.000Z/g, "")
+      );
+      state.sqlBySmartData.rows = sqlBySmartData.rowsAffected[0];
+      for (const property in sqlBySmartData.recordset[0]) {
+        state.sqlBySmartData.headers.push({
+          text: property,
+          value: property,
+          align: "start",
+        });
+      }
+      state.sqlBySmartData.timestamp = Timestamp();
+      console.log(
+        "VUEX -> updated sqlBySmartData ",
+        state.sqlBySmartData.timestamp
+      );
+    },
   },
   actions: {
     loadStordcData({ commit }) {
       Api()
         .get("/")
         .then((result) => {
-          console.log("getting STORDC data...");
           commit("SAVE_STORDC_DATA", result.data);
         })
         .catch((error) => {
@@ -134,6 +205,26 @@ export default new Vuex.Store({
         .get("/lav")
         .then((result) => {
           commit("SAVE_LAV_DATA", result.data);
+        })
+        .catch((error) => {
+          throw new Error(`API ${error}`);
+        });
+    },
+    loadBySprintData({ commit }) {
+      Api()
+        .get("/bysprint")
+        .then((result) => {
+          commit("SAVE_BYSPRINT_DATA", result.data);
+        })
+        .catch((error) => {
+          throw new Error(`API ${error}`);
+        });
+    },
+    loadBySmartData({ commit }) {
+      Api()
+        .get("/bysmart")
+        .then((result) => {
+          commit("SAVE_BYSMART_DATA", result.data);
         })
         .catch((error) => {
           throw new Error(`API ${error}`);

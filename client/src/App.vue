@@ -86,6 +86,14 @@ export default {
           title: "Split View",
           path: "/splitview",
         },
+        {
+          title: "BySprint",
+          path: "/bysprint",
+        },
+        {
+          title: "BySmart",
+          path: "/bysmart",
+        },
       ],
       snackbar: false,
       text: `Made with ❤ by LAMEP SNC`,
