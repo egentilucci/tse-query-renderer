@@ -74,7 +74,7 @@ app.get("/bysprint", function (req, res) {
 });
 
 app.get("/bysmart", function (req, res) {
-  var sqlQuery = "SELECT * FROM UACutting ORDER BY TimeStamp DESC";
+  var sqlQuery = "SELECT * FROM LAMEP_BYSMART ORDER BY TimeStamp DESC";
 
   queryDB(dbconfig.CONFIG_OPCCS, res, sqlQuery);
 });
