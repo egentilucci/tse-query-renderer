@@ -21,6 +21,16 @@
 
       <v-spacer></v-spacer>
 
+      <v-btn
+        text
+        outlined
+        @contextmenu.prevent=""
+        @click="forceReRenderComponent"
+        class="mr-2"
+      >
+        <v-icon>mdi-cached</v-icon>
+      </v-btn>
+
       <v-tooltip bottom>
         <template v-slot:activator="{ on, attrs }">
           <v-btn
