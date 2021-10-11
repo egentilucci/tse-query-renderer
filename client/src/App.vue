@@ -81,19 +81,19 @@ export default {
     return {
       tabItems: [
         {
-          title: "Situazione Ordini Clienti",
+          title: "SITORDC",
           path: "/",
         },
         {
-          title: "Interrogazione Movimenti",
+          title: "INTMOV",
           path: "/intmov",
         },
         {
-          title: "Lavorazioni",
+          title: "LAV",
           path: "/lav",
         },
         {
-          title: "Split View",
+          title: "SPLITVIEW",
           path: "/splitview",
         },
         {
