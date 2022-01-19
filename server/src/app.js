@@ -67,8 +67,7 @@ app.get("/lav", function (req, res) {
 });
 
 app.get("/bysprint", function (req, res) {
-  var sqlQuery =
-    "SELECT * FROM Cutting ORDER BY DataLavoro DESC, OraLavoro DESC";
+  var sqlQuery = "SELECT * FROM LAMEP_BYSPRINT";
 
   queryDB(dbconfig.CONFIG_OPCCS, res, sqlQuery);
 });
