@@ -23,6 +23,14 @@ export default new Vuex.Store({
       timestamp: "",
     },
 
+    // SIT MP
+    sqlSitMPData: {
+      recordset: [],
+      headers: [],
+      rows: 0,
+      timestamp: "",
+    },
+
     // LAV
     sqlLavData: {
       recordset: [],
@@ -103,6 +111,32 @@ export default new Vuex.Store({
       );
     },
 
+    // SIT MP
+    SAVE_SITMP_DATA(state, sqlSitMPData) {
+      // clear object before use
+      state.sqlSitMPData.recordset = [];
+      state.sqlSitMPData.headers = [];
+      state.sqlSitMPData.rows = 0;
+      state.sqlSitMPData.timestamp = "";
+
+      state.sqlSitMPData.recordset = JSON.parse(
+        JSON.stringify(sqlSitMPData.recordset).replace(/T00:00:00.000Z/g, "")
+      );
+      state.sqlSitMPData.rows = sqlSitMPData.rowsAffected[0];
+      for (const property in sqlSitMPData.recordset[0]) {
+        state.sqlSitMPData.headers.push({
+          text: property,
+          value: property,
+          align: "start",
+        });
+      }
+      state.sqlSitMPData.timestamp = Timestamp();
+      console.log(
+        "VUEX -> updated sqlSitMPData ",
+        state.sqlSitMPData.timestamp
+      );
+    },
+
     // LAV
     SAVE_LAV_DATA(state, sqlLavData) {
       // clear object before use
@@ -179,6 +213,7 @@ export default new Vuex.Store({
       );
     },
   },
+
   actions: {
     loadStordcData({ commit }) {
       Api()
@@ -190,6 +225,7 @@ export default new Vuex.Store({
           throw new Error(`API ${error}`);
         });
     },
+
     loadIntmovData({ commit }) {
       Api()
         .get("/intmov")
@@ -200,6 +236,18 @@ export default new Vuex.Store({
           throw new Error(`API ${error}`);
         });
     },
+
+    loadSitMPData({ commit }) {
+      Api()
+        .get("/SitMP")
+        .then((result) => {
+          commit("SAVE_SITMP_DATA", result.data);
+        })
+        .catch((error) => {
+          throw new Error(`API ${error}`);
+        });
+    },
+
     loadLavData({ commit }) {
       Api()
         .get("/lav")
@@ -210,6 +258,7 @@ export default new Vuex.Store({
           throw new Error(`API ${error}`);
         });
     },
+
     loadBySprintData({ commit }) {
       Api()
         .get("/bysprint")
@@ -220,6 +269,7 @@ export default new Vuex.Store({
           throw new Error(`API ${error}`);
         });
     },
+
     loadBySmartData({ commit }) {
       Api()
         .get("/bysmart")

@@ -2,6 +2,7 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 import Stordc from "../views/Stordc";
 import Intmov from "../views/Intmov";
+import SitMP from "../views/SitMP";
 import Lav from "../views/Lav";
 import SplitView from "../views/SplitView";
 import BySprint from "../views/BySprint";
@@ -18,6 +19,11 @@ const routes = [
   {
     path: "/intmov",
     component: Intmov,
+    meta: { title: "LAMEP APP" },
+  },
+  {
+    path: "/sitmp",
+    component: SitMP,
     meta: { title: "LAMEP APP" },
   },
   {

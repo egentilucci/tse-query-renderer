@@ -89,6 +89,10 @@ export default {
           path: "/intmov",
         },
         {
+          title: "SITMP",
+          path: "/SitMP",
+        },
+        {
           title: "LAV",
           path: "/lav",
         },
