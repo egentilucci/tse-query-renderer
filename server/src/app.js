@@ -8,7 +8,7 @@ const dbconfig = require("./config/dbconfig");
 const port = "3000";
 
 //app.use(express.static(__dirname + '/public'));
-app.use(logger("combined"));
+app.use(logger("[:remote-addr] :method :url :status :res[content-length] - :response-time ms"));
 app.use(cors()); //you need to use cors if you want any client to connect to this server
 
 /** bodyParser.urlencoded(options)
@@ -27,7 +27,7 @@ app.use(
 app.use(bodyParser.json());
 
 function queryDB(config, res, sqlQuery) {
-  console.log("\n[query] " + config().database);
+  console.log("\n" + Date());
 
   // connect to your database
   sql.connect(config(), function (err) {
@@ -40,7 +40,7 @@ function queryDB(config, res, sqlQuery) {
     sqlRequest.query(sqlQuery, function (err, data) {
       if (err) console.log(err);
 
-      console.log("~ " + Date() + " | " + sqlQuery);
+      console.log("DB: " + config().database + "\nQUERY: " + sqlQuery);
       // send records as a response
       res.send(data);
       sql.close();
