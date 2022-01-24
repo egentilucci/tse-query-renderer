@@ -2,6 +2,7 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 import Stordc from "../views/Stordc";
 import Intmov from "../views/Intmov";
+import Giacmag from "../views/Giacmag";
 import SitMP from "../views/SitMP";
 import Lav from "../views/Lav";
 import SplitView from "../views/SplitView";
@@ -19,6 +20,11 @@ const routes = [
   {
     path: "/intmov",
     component: Intmov,
+    meta: { title: "LAMEP APP" },
+  },
+  {
+    path: "/giacmag",
+    component: Giacmag,
     meta: { title: "LAMEP APP" },
   },
   {

@@ -23,6 +23,14 @@ export default new Vuex.Store({
       timestamp: "",
     },
 
+    // GIACMAG
+    sqlGiacmagData: {
+      recordset: [],
+      headers: [],
+      rows: 0,
+      timestamp: "",
+    },
+
     // SIT MP
     sqlSitMPData: {
       recordset: [],
@@ -108,6 +116,32 @@ export default new Vuex.Store({
       console.log(
         "VUEX -> updated sqlIntmovData ",
         state.sqlIntmovData.timestamp
+      );
+    },
+
+    // GIACMAG
+    SAVE_GIACMAG_DATA(state, sqlGiacmagData) {
+      // clear object before use
+      state.sqlGiacmagData.recordset = [];
+      state.sqlGiacmagData.headers = [];
+      state.sqlGiacmagData.rows = 0;
+      state.sqlGiacmagData.timestamp = "";
+
+      state.sqlGiacmagData.recordset = JSON.parse(
+        JSON.stringify(sqlGiacmagData.recordset).replace(/T00:00:00.000Z/g, "")
+      );
+      state.sqlGiacmagData.rows = sqlGiacmagData.rowsAffected[0];
+      for (const property in sqlGiacmagData.recordset[0]) {
+        state.sqlGiacmagData.headers.push({
+          text: property,
+          value: property,
+          align: "start",
+        });
+      }
+      state.sqlGiacmagData.timestamp = Timestamp();
+      console.log(
+        "VUEX -> updated sqlGiacmagData ",
+        state.sqlGiacmagData.timestamp
       );
     },
 
@@ -231,6 +265,17 @@ export default new Vuex.Store({
         .get("/intmov")
         .then((result) => {
           commit("SAVE_INTMOV_DATA", result.data);
+        })
+        .catch((error) => {
+          throw new Error(`API ${error}`);
+        });
+    },
+
+    loadGiacmagData({ commit }) {
+      Api()
+        .get("/giacmag")
+        .then((result) => {
+          commit("SAVE_GIACMAG_DATA", result.data);
         })
         .catch((error) => {
           throw new Error(`API ${error}`);

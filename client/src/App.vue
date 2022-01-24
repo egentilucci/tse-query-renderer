@@ -89,6 +89,10 @@ export default {
           path: "/intmov",
         },
         {
+          title: "GIACENZE",
+          path: "/giacmag",
+        },
+        {
           title: "SITMP",
           path: "/SitMP",
         },
