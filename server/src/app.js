@@ -60,6 +60,12 @@ app.get("/intmov", function (req, res) {
   queryDB(dbconfig.CONFIG_LAMEP, res, sqlQuery);
 });
 
+app.get("/giacmag", function (req, res) {
+  var sqlQuery = "SELECT * FROM NVS_GIACMAG";
+
+  queryDB(dbconfig.CONFIG_LAMEP, res, sqlQuery);
+});
+
 app.get("/sitmp", function (req, res) {
   var sqlQuery = "SELECT * FROM LAMEP_GIACENZA_LOTTI";
 
